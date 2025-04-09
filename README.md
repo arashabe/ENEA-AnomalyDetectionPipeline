@@ -95,3 +95,8 @@ Ensure the following are installed:
    ```bash
    git clone https://sccserver.enea.it/arash/enea-anomalydetectionpipeline.git
    cd enea-anomalydetectionpipeline
+
+### Run
+
+   ```bash
+  python main.py
