@@ -1,93 +1,97 @@
-# ENEA-AnomalyDetectionPipeline
+# PODID Anomaly Detection Pipeline
 
+## Overview
+The **PODID Anomaly Detection Pipeline** is a data processing and machine learning framework designed to identify anomalies in energy consumption data. Using PySpark for scalable data preprocessing and a combination of machine learning techniques, the pipeline optimizes unsupervised anomaly detection methods to generate reliable ensemble predictions.
 
+This project leverages tools like PCA, Isolation Forest, and Local Outlier Factor to flag anomalous patterns, ensuring robust insights into energy data analysis.
 
-## Getting started
+---
 
-To make it easy for you to get started with GitLab, here's a list of recommended next steps.
+## Features
+- **Scalable Preprocessing**: Handles large-scale datasets efficiently using PySpark.
+- **Unsupervised Anomaly Detection**:
+  - Principal Component Analysis (PCA).
+  - Isolation Forest with parameter optimization.
+  - Local Outlier Factor (LOF) with parameter optimization.
+- **Ensemble Method**: Combines predictions from multiple anomaly detection models for increased accuracy.
+- **Customizable Output**: Exports detected anomalies in CSV format for further analysis.
+- **Technology Integration**: Combines Python, PySpark, Apache Hadoop, scikit-learn, and more for a seamless workflow.
 
-Already a pro? Just edit this README.md and make it your own. Want to make it easy? [Use the template at the bottom](#editing-this-readme)!
+---
 
-## Add your files
+## Dataset Description
+The dataset consists of energy consumption data and associated features. Below is a detailed description of each column:
 
-- [ ] [Create](https://docs.gitlab.com/ee/user/project/repository/web_editor.html#create-a-file) or [upload](https://docs.gitlab.com/ee/user/project/repository/web_editor.html#upload-a-file) files
-- [ ] [Add files using the command line](https://docs.gitlab.com/ee/gitlab-basics/add-file.html#add-a-file-using-the-command-line) or push an existing Git repository with the following command:
+| **Column Name**        | **Type**  | **Description**                                                                 |
+|-------------------------|-----------|---------------------------------------------------------------------------------|
+| `latitude`             | Double    | Latitude of the measurement location.                                           |
+| `longitude`            | Double    | Longitude of the measurement location.                                          |
+| `height`               | Double    | Height (in meters) of the measurement device.                                   |
+| `start_ts`             | Timestamp | Start timestamp of the measurement period.                                      |
+| `end_ts`               | Timestamp | End timestamp of the measurement period.                                        |
+| `ElectricPanelID`      | String    | Unique identifier for the electric panel.                                       |
+| `Line1Current`         | Double    | Electric current on Line 1 (in amperes).                                        |
+| `Line2Current`         | Double    | Electric current on Line 2 (in amperes).                                        |
+| `Line3Current`         | Double    | Electric current on Line 3 (in amperes).                                        |
+| `PODID`                | String    | Unique identifier for the Point of Delivery (POD).                              |
+| `Phase1ActivePower`    | Double    | Active power on Phase 1 (in kilowatts).                                         |
+| `Phase1ApparentPower`  | Double    | Apparent power on Phase 1 (in kilovolt-amperes).                                |
+| `Phase1PowerFactor`    | Double    | Power factor on Phase 1 (ratio of real power to apparent power).                |
+| `Phase1ReactivePower`  | Double    | Reactive power on Phase 1 (in kilovars).                                        |
+| `Phase1Voltage`        | Double    | Voltage on Phase 1 (in volts).                                                  |
+| `Phase2ActivePower`    | Double    | Active power on Phase 2 (in kilowatts).                                         |
+| `Phase2ApparentPower`  | Double    | Apparent power on Phase 2 (in kilovolt-amperes).                                |
+| `Phase2PowerFactor`    | Double    | Power factor on Phase 2 (ratio of real power to apparent power).                |
+| `Phase2ReactivePower`  | Double    | Reactive power on Phase 2 (in kilovars).                                        |
+| `Phase2Voltage`        | Double    | Voltage on Phase 2 (in volts).                                                  |
+| `Phase3ActivePower`    | Double    | Active power on Phase 3 (in kilowatts).                                         |
+| `Phase3ApparentPower`  | Double    | Apparent power on Phase 3 (in kilovolt-amperes).                                |
+| `Phase3PowerFactor`    | Double    | Power factor on Phase 3 (ratio of real power to apparent power).                |
+| `Phase3ReactivePower`  | Double    | Reactive power on Phase 3 (in kilovars).                                        |
+| `Phase3Voltage`        | Double    | Voltage on Phase 3 (in volts).                                                  |
+| `TotalActiveEnergy`    | Double    | Total energy consumption during the period (in kilowatt-hours).                 |
+| `TotalActivePower`     | Double    | Total active power (in kilowatts).                                              |
+| `TotalApparentPower`   | Double    | Total apparent power (in kilovolt-amperes).                                     |
+| `TotalReactiveEnergy`  | Double    | Total reactive energy during the period (in kilovars-hours).                    |
+| `TotalReactivePower`   | Double    | Total reactive power (in kilovars).                                             |
+| `TownCode`             | String    | Code representing the town or location of the measurement.                      |
 
-```
-cd existing_repo
-git remote add origin https://sccserver.enea.it/arash/enea-anomalydetectionpipeline.git
-git branch -M main
-git push -uf origin main
-```
+---
 
-## Integrate with your tools
+## Technologies Used
+This project employs the following technologies and tools:
 
-- [ ] [Set up project integrations](https://sccserver.enea.it/arash/enea-anomalydetectionpipeline/-/settings/integrations)
+1. **Python**: The primary programming language used for writing the project code.
+2. **PySpark**: Used for distributed data processing and handling large datasets. PySpark integrates with Apache Spark, enabling scalable operations on data. `SparkSession` was used to initialize PySpark and interact with the data.
+3. **Apache Hadoop**: Integrated to manage data in a distributed manner. Features like HDFS (Hadoop Distributed File System) and the native `libhadoop` library were configured to process data distributedly via Spark.
+4. **Scikit-learn**: Used for machine learning and anomaly detection, implementing algorithms such as:
+   - PCA (Principal Component Analysis): For dimensionality reduction and anomaly detection through reconstruction error.
+   - Isolation Forest: For anomaly detection based on identifying data points that deviate from "normal" behavior.
+   - Local Outlier Factor (LOF): For measuring data point isolation relative to its neighbors.
+5. **Pandas**: Utilized for data manipulation and analysis. Data from PySpark was converted into Pandas DataFrames for easier handling during anomaly detection.
+6. **NumPy**: Used for mathematical and numerical computations, essential for operations like variance calculations and array manipulations required for PCA and other machine learning algorithms.
+7. **VS Code (IDE)**: Development was carried out using VS Code as the Integrated Development Environment, with its integrated terminal for executing PySpark commands and interacting with Hadoop and Spark.
+8. **Bash (Linux/Ubuntu)**: The Ubuntu terminal and Bash commands were used to configure the environment, install necessary packages, and set up environment variables like `JAVA_LIBRARY_PATH` to ensure Hadoop and PySpark integration.
+9. **Apache Spark**: The distributed computing platform that works with PySpark to process large datasets in parallel, enabling efficient data transformations and analysis.
+10. **Silhouette Score**: A metric from scikit-learn used to evaluate the quality of clustering and anomaly detection models. It measures how well a data point fits within its assigned cluster compared to others, facilitating the detection of anomalies in the dataset.
 
-## Collaborate with your team
-
-- [ ] [Invite team members and collaborators](https://docs.gitlab.com/ee/user/project/members/)
-- [ ] [Create a new merge request](https://docs.gitlab.com/ee/user/project/merge_requests/creating_merge_requests.html)
-- [ ] [Automatically close issues from merge requests](https://docs.gitlab.com/ee/user/project/issues/managing_issues.html#closing-issues-automatically)
-- [ ] [Enable merge request approvals](https://docs.gitlab.com/ee/user/project/merge_requests/approvals/)
-- [ ] [Set auto-merge](https://docs.gitlab.com/ee/user/project/merge_requests/merge_when_pipeline_succeeds.html)
-
-## Test and Deploy
-
-Use the built-in continuous integration in GitLab.
-
-- [ ] [Get started with GitLab CI/CD](https://docs.gitlab.com/ee/ci/quick_start/index.html)
-- [ ] [Analyze your code for known vulnerabilities with Static Application Security Testing (SAST)](https://docs.gitlab.com/ee/user/application_security/sast/)
-- [ ] [Deploy to Kubernetes, Amazon EC2, or Amazon ECS using Auto Deploy](https://docs.gitlab.com/ee/topics/autodevops/requirements.html)
-- [ ] [Use pull-based deployments for improved Kubernetes management](https://docs.gitlab.com/ee/user/clusters/agent/)
-- [ ] [Set up protected environments](https://docs.gitlab.com/ee/ci/environments/protected_environments.html)
-
-***
-
-# Editing this README
-
-When you're ready to make this README your own, just edit this file and use the handy template below (or feel free to structure it however you want - this is just a starting point!). Thanks to [makeareadme.com](https://www.makeareadme.com/) for this template.
-
-## Suggestions for a good README
-
-Every project is different, so consider which of these sections apply to yours. The sections used in the template are suggestions for most open source projects. Also keep in mind that while a README can be too long and detailed, too long is better than too short. If you think your README is too long, consider utilizing another form of documentation rather than cutting out information.
-
-## Name
-Choose a self-explaining name for your project.
-
-## Description
-Let people know what your project can do specifically. Provide context and add a link to any reference visitors might be unfamiliar with. A list of Features or a Background subsection can also be added here. If there are alternatives to your project, this is a good place to list differentiating factors.
-
-## Badges
-On some READMEs, you may see small images that convey metadata, such as whether or not all the tests are passing for the project. You can use Shields to add some to your README. Many services also have instructions for adding a badge.
-
-## Visuals
-Depending on what you are making, it can be a good idea to include screenshots or even a video (you'll frequently see GIFs rather than actual videos). Tools like ttygif can help, but check out Asciinema for a more sophisticated method.
+---
 
 ## Installation
-Within a particular ecosystem, there may be a common way of installing things, such as using Yarn, NuGet, or Homebrew. However, consider the possibility that whoever is reading your README is a novice and would like more guidance. Listing specific steps helps remove ambiguity and gets people to using your project as quickly as possible. If it only runs in a specific context like a particular programming language version or operating system or has dependencies that have to be installed manually, also add a Requirements subsection.
 
-## Usage
-Use examples liberally, and show the expected output if you can. It's helpful to have inline the smallest example of usage that you can demonstrate, while providing links to more sophisticated examples if they are too long to reasonably include in the README.
+### Prerequisites
+Ensure the following are installed:
+- **Python**: Version 3.10.14 or later.
+- **Apache Spark**: Version 3.3.0.
+- **Hadoop**: Version 3.3.6.
+- Python libraries:
+  - PySpark (`pyspark`)
+  - NumPy (`numpy`)
+  - Pandas (`pandas`)
+  - Scikit-learn (`sklearn`)
 
-## Support
-Tell people where they can go to for help. It can be any combination of an issue tracker, a chat room, an email address, etc.
-
-## Roadmap
-If you have ideas for releases in the future, it is a good idea to list them in the README.
-
-## Contributing
-State if you are open to contributions and what your requirements are for accepting them.
-
-For people who want to make changes to your project, it's helpful to have some documentation on how to get started. Perhaps there is a script that they should run or some environment variables that they need to set. Make these steps explicit. These instructions could also be useful to your future self.
-
-You can also document commands to lint the code or run tests. These steps help to ensure high code quality and reduce the likelihood that the changes inadvertently break something. Having instructions for running tests is especially helpful if it requires external setup, such as starting a Selenium server for testing in a browser.
-
-## Authors and acknowledgment
-Show your appreciation to those who have contributed to the project.
-
-## License
-For open source projects, say how it is licensed.
-
-## Project status
-If you have run out of energy or time for your project, put a note at the top of the README saying that development has slowed down or stopped completely. Someone may choose to fork your project or volunteer to step in as a maintainer or owner, allowing your project to keep going. You can also make an explicit request for maintainers.
+### Setup
+1. Clone the repository:
+   ```bash
+   git clone https://sccserver.enea.it/arash/enea-anomalydetectionpipeline.git
+   cd enea-anomalydetectionpipeline

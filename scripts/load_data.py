@@ -78,14 +78,3 @@ def load_json_data(spark, folder_path):
 
     return df_total
 
-
-
-
-
-def load_csv_data(spark, csv_path):
-    """
-    Carica un CSV già salvato da un precedente parsing (es: df_total)
-    """
-    df = spark.read.option("header", True).csv(csv_path, inferSchema=True)
-
-    return df
