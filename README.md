@@ -8,7 +8,7 @@ This project is part of a Master’s thesis and focuses on building a production
 
 ## 📂 Dataset Description
 
-The dataset is provided by ENEA and consists of multiple structured JSON files containing energy consumption data collected from smart meters. Each entry includes geographical, temporal, and electrical measurements.
+The dataset is provided by [**ENEA**](https://www.pell.enea.it) and consists of multiple structured JSON files containing energy consumption data collected from smart meters. Each entry includes geographical, temporal, and electrical measurements.
 
 | Field Name              | Type     | Description                                                             |
 |------------------------|----------|-------------------------------------------------------------------------|
