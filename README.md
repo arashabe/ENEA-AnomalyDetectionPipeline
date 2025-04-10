@@ -2,7 +2,7 @@
 
 ## 📌 Overview
 
-This project is part of a Master’s thesis and focuses on building a production-ready, scalable pipeline for unsupervised anomaly detection in smart meter energy consumption data. Using PySpark and unsupervised learning models, the system identifies anomalous Points of Delivery (PODIDs) based on their monthly consumption behavior. The pipeline reads and processes raw JSON data, aggregates meaningful features, applies multiple anomaly detection techniques, and combines results via an ensemble approach—emphasizing performance, scalability, and production feasibility.
+This project is part of a Master’s thesis and is conducted in collaboration with [**ENEA**](https://www.enea.it/it/) (Italian National Agency for New Technologies, Energy and Sustainable Economic Development) and the [**University of Bergamo**](https://en.unibg.it). It focuses on building a production-ready, scalable pipeline for unsupervised anomaly detection in smart meter energy consumption data. Using PySpark and unsupervised learning models, the system identifies anomalous Points of Delivery (PODIDs) based on their monthly consumption behavior. The pipeline reads and processes raw JSON data, aggregates meaningful features, applies multiple anomaly detection techniques, and combines results via an ensemble approach—emphasizing performance, scalability, and production feasibility.
 
 ---
 
@@ -152,5 +152,13 @@ The pipeline outputs a labeled dataset with anomaly flags per `PODID`, based on:
 - **Silhouette Score** to assess the separability of detected anomalies from normal patterns.
 
 These results help domain experts identify potential faults, consumption peaks, or data inconsistencies in smart grid systems.
+
+---
+
+## Acknowledgments
+
+I would like to express my deepest gratitude to my professor, [**Prof. Scandurra**](https://unibg.unifind.cineca.it/individual?uri=http%3A%2F%2Firises.unibg.it%2Fresource%2Fperson%2F1502), for her invaluable guidance, insightful feedback, and unwavering support throughout this project. Her expertise and encouragement have been instrumental in shaping the success of this work.
+
+Additionally, I extend my heartfelt thanks to **ENEA (Italian National Agency for New Technologies, Energy and Sustainable Economic Development)** for their collaboration and support. Their expertise and resources have greatly contributed to the development and real-world applicability of this project.
 
 
