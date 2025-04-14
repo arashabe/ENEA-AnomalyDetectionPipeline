@@ -153,8 +153,8 @@ export MYSQL_HOST=localhost
 ENEA-AnomalyDetectionPipeline/
 │
 ├── data/
-│   └── Menowattge/                     # Files JSON 
-│
+│   ├── Menowattge/                     # Files JSON 
+│   └── municipalities/
 ├── scripts/
 │   ├── load_data.py             
 │   ├── preprocessing.py         

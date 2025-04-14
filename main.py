@@ -1,4 +1,4 @@
-from scripts.load_data import load_json_data
+from scripts.load_data import load_json_data, load_csv_data
 from scripts.preprocessing import preprocess
 from scripts.anomaly_detection import detect_anomalies
 from scripts.ensemble import combine_ensemble_labels
@@ -15,14 +15,16 @@ spark = SparkSession.builder.appName("PODID Anomaly Detection").getOrCreate()
 
 # Step 1 - JSON Data Loading
 json_path = "data/Menowattge"
+csv_path = "data/municipalities/municipalities_info.csv"
 df_raw = load_json_data(spark, json_path)
+municipalities_df = load_csv_data(spark, csv_path)
 
 # Debug schema
 #print("Schema :")
 #df_raw.printSchema()
 
 # Step 2 - Preprocessing with PySpark
-df_processed = preprocess(df_raw)
+df_processed = preprocess(df_raw, municipalities_df)
 df_processed.printSchema()
 
 

@@ -78,3 +78,10 @@ def load_json_data(spark, folder_path):
 
     return df_total
 
+
+
+def load_csv_data(spark, csv_path):
+    print(f"📂 Loading CSV file from: {csv_path} using Spark")
+    df_csv = spark.read.csv(csv_path, header=True, inferSchema=True)
+    print("✅ Finished loading municipalities data.")
+    return df_csv
