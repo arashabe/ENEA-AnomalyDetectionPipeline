@@ -1,5 +1,7 @@
 output/
-data/
+data/*
+
+!data/municipalities
 doc/
 __pycache__/
 *.env
