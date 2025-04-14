@@ -1,4 +1,3 @@
-# scripts/preprocessing.py
 from pyspark.sql.functions import col, isnull, count, avg, sum as _sum, when
 from pyspark.sql import DataFrame
 
