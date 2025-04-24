@@ -200,7 +200,7 @@ The pipeline outputs a labeled dataset with anomaly flags per `PODID`, based on:
 
 ### Visualizations
 
-Here are some relevant images:
+Some plots obtained from the pipeline results for the month of January. Including the results of subsequent analyses would provide a better understanding of the models' performance:
 
 <img src="images/Anomaly-Detection-Distribution.png" alt="Anomaly Detection Distribution" width="500px"><br>
 
