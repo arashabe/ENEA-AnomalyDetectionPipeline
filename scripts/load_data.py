@@ -5,10 +5,10 @@ from pyspark.sql.types import DoubleType
 
 
 def load_json_data(spark, folder_path):
-    print(f"📂 Loading JSON files from: {folder_path} using Spark")
+    print(f"Loading JSON files from: {folder_path} using Spark")
 
     # Load all JSON lines from files in the folder (NDJSON format)
-    df_raw = spark.read.json(folder_path)  # Automatically parallel, line-by-line
+    df_raw = spark.read.json(folder_path)  
 
     # Filter only valid entries
     df_valid = df_raw.filter("UrbanDataset.values.line is not null")
@@ -71,9 +71,9 @@ def load_json_data(spark, folder_path):
         if c in df_total.columns:
             df_total = df_total.withColumn(c, col(c).cast(DoubleType()))
 
-    print("✅ Finished loading.")
-    print(f"📊 Total rows: {df_total.count()}")
-    #print("🆔 Distinct PODIDs:")
+    print("Finished loading.")
+    print(f"Total rows: {df_total.count()}")
+    #print("Distinct PODIDs:")
     #df_total.select("PODID").distinct().show()
 
     return df_total
@@ -81,7 +81,7 @@ def load_json_data(spark, folder_path):
 
 
 def load_csv_data(spark, csv_path):
-    print(f"📂 Loading CSV file from: {csv_path} using Spark")
+    print(f"Loading CSV file from: {csv_path} using Spark")
     df_csv = spark.read.csv(csv_path, header=True, inferSchema=True)
-    print("✅ Finished loading municipalities data.")
+    print("Finished loading municipalities data.")
     return df_csv
