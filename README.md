@@ -202,11 +202,11 @@ The pipeline outputs a labeled dataset with anomaly flags per `PODID`, based on:
 
 Here are some relevant images:
 
-<img src="images/Anomaly-Detection-Distribution.png" alt="Anomaly Detection Distribution" width="500px">
+<img src="images/Anomaly-Detection-Distribution.png" alt="Anomaly Detection Distribution" width="500px"><br>
 
-<img src="images/heatmap-models.png" alt="Heatmap Models" width="500px">
+<img src="images/heatmap-models.png" alt="Heatmap Models" width="500px"><br>
 
-<img src="images/anomaly_venn_overlap.png" alt="Anomaly Venn Overlap" width="500px">
+<img src="images/anomaly_venn_overlap.png" alt="Anomaly Venn Overlap" width="500px"><br>
 
 <img src="images/ensemble_scatter.png" alt="TSNE Ensemble" width="500px">
 
